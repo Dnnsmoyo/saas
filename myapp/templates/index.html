@@ -1,0 +1,84 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Investment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+ <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/signup">Register</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+{% if request.user.is_authenticated %}
+<p>{{request.user}}, your free trial ends on {{enddate|date}}.
+  <a href="/pricing">Upgrade to premium</a></p>
+  {% else %}
+  <p>Please <a href="/accounts/login">login</a> or <a href="/accounts/register">register</a></p>
+  {% endif %}
+<div class="jumbotron text-center">
+  <h1>Your #1 investment provider</h1>
+  <p><a href="/accounts/register">Create free account</a></p> 
+</div>
+ <center> <h1>Features</h1></center>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Portfolio</h3>
+      <img src="{% static 'images/img1.jpg' %}" width="90" height="90">
+      <p>Easily create an investment portfolio</p>
+      <p>Investment portfolio based on your financial status</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Industries</h3>
+      <img src="{% static 'images/img2.jpg' %}" width="90" height="90">
+      <p>Offering a wide range of investment opportunities across different industries including mining,technology and tourism</p>
+      <p></p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Visualization</h3>
+      <img src="{% static 'images/img3.jpg' %}" width="90" height="90">        
+      <p>Easily visualize your portfolio data with our responsive graphs</p>
+      <p></p>
+    </div>
+        <div class="col-sm-4">
+      <h3>Real Time</h3>  
+      <img src="{% static 'images/img4.jpg' %}" width="90" height="90">      
+      <p>Get real time updates on your data</p>
+      <p>No page refresh! See your activies in real time!</p>
+    </div>
+        <div class="col-sm-4">
+      <h3>Tracking</h3>
+      <img src="{% static 'images/img5.png' %}" width="90" height="90">        
+      <p>Get personalized feeds on all your activities</p>
+      <p>Track portfolio progress and set goals</p>
+    </div>
+  </div>
+</div>
+<div class="container" style="padding-bottom: 90px;margin-right: 0px;margin-left: 0px;">
+  </div>
+
+</body>
+</html>
+
