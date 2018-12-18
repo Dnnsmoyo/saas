@@ -41,17 +41,50 @@ INSTALLED_APPS = [
     'myapp',
     'django_hosts',
     'rest_framework',
+    'actstream',
+    'thorn.django',
+    'corsheaders',
+    'sorl.thumbnail',
+    'newsletter',
 ]
 
 SITE_ID = 1
+
+PUSHER_APP_ID = u"466128"
+PUSHER_KEY = u"c1437bd58d899d4e8957"
+PUSHER_SECRET = u"8474154f580fd491e545"
+PUSHER_CLUSTER = u"ap2"
+
+CORS_ORIGIN_WHITELIST = (
+    '*'
+)
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 SIGNUP_REDIRECT_URL = '/'
 
-ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.ScopedRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'persons': '1000/day',
+        'companies': '20/day',
+        'pitches':'20/day'
+    }
+}
 
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+CORS_ORIGIN_ALLOW_ALL = True
+ACTSTREAM_SETTINGS = {
+    'MANAGER': 'myapp.managers.MyActionManager',
+    'FETCH_RELATIONS': True,
+    'USE_PREFETCH': True,
+    'USE_JSONFIELD': False,
+    'GFK_FETCH_DEPTH': 1,
+}
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -1,0 +1,173 @@
+{% load activity_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdnjs.com/libraries/Chart.js"></script>
+<div class="text-center">
+{% if personal %}
+{% for p in personal %}
+<p>Personal account</p>
+<a class="btn btn-primary" href="/personal/edit/{{p.id}}">Edit</a>
+<a class="btn btn-delete" href="/personal/delete/{{p.id}}">Delete</a>
+{% endfor %}
+{% else %}
+{% if comp %}
+{% for c in comp %}
+<p>Company account</p>
+<a class="btn btn-primary" href="/company/edit/{{c.id}}">Edit</a>
+<a class="btn btn-danger" href="/company/delete/{{c.id}}">Delete</a>
+{% endfor %}
+{% endif %}
+{% endif %}
+</div>
+<i class='fas fa-bell' style='font-size:48px;color:red'></i>
+<div class="container">
+  <h2><b>{{request.user}}'s</b> Dashboard</h2>
+  <!-- Button to Open the Modal -->
+  <button style="visibility:hidden" id="btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Notifications</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          {% for a in act %}
+          <ul>
+            <li>{{a}}</li>
+        </ul>
+        {% endfor %}
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% if person %}
+{% for p in person %}
+<ul>
+  <li>{{p.user.username}}</li>
+  <li>{{p.address}}</li>
+  <li>{{p.category}}</li>
+  <li>{{p.cell}}</li>
+  <li>{{p.next_of_kin}}</li>
+  <li>{{p.maritality}}</li>
+  <li>{{p.banking_details}}</li>
+</ul>
+{% endfor %}
+{% endif %}
+{% if comp %}
+{% for c in comp %}
+<ul>
+  <li>{{c.name}}</li>
+  <li>{{c.address}}</li>
+  <li>{{c.website}}</li>
+  <li>{{c.email}}</li>
+  <li>{{c.contact}}</li>
+</ul>
+{% endfor %}
+{% endif %}
+  <a class="btn btn-primary" href="/pitch/all">Start Investing</a>
+  <a class="btn btn-primary" href="/pitch/create">Add business</a>
+<canvas id="myChart"></canvas>
+<canvas id="chart"></canvas>
+<script type="text/javascript">
+var ctx = document.getElementById('myChart').getContext('2d');
+var ctx2 = document.getElementById('chart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "Investment history",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});	
+</script>
+<script type="text/javascript">
+    $("document").ready(function(){
+        $("i").click(function(){
+         $("#btn").click()
+        })
+    })
+     $("document").ready(function(){
+        $("#follow").click(function(){
+         $.getJSON('http://localhost:8000/activity/follow/<content_type_id>/<object_id>/',function(res){
+            console.log(res.data)
+            $("#follow").val("following")
+         })
+        })
+    }) 
+        $("document").ready(function(){
+        $("#unfollow").click(function(){
+         $.getJSON('http://investrack.localhost:8000/activity/unfollow/<content_type_id>/<object_id>/',function(res){
+            alert(res.data)
+
+         })
+        })
+    })
+var scatterChart = new Chart(ctx2, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Scatter Dataset',
+            data: [{
+                x: -10,
+                y: 0
+            }, {
+                x: 0,
+                y: 10
+            }, {
+                x: 10,
+                y: 5
+            }]
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom'
+            }]
+        }
+    }
+});
+
+</script>

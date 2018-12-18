@@ -10,19 +10,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-</head>
-<body>
-
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
  <a class="navbar-brand" href="/">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -47,38 +34,38 @@
   <h1>Pricing plans</h1>
   <p>Select a plan </p> 
 </div>
-  
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
       <h3>Daily</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
      <h1>$20</h1>
-      <a href="#" class="btn btn-primary">Signup</a>
+      <a href="{% url 'daily_detail' %}" class="btn btn-primary">Signup</a>
     </div>
     <div class="col-sm-4">
       <h3>Weekly</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
    <h1>$50</h1>
-      <a href="#" class="btn btn-primary">Signup</a>
+      <a href="{% url 'weekly_detail' %}" class="btn btn-primary">Signup</a>
     </div>
     <div class="col-sm-4">
       <h3>Monthly</h3>        
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
     <h1>$100</h1>
-      <a href="#" class="btn btn-primary">Signup</a>
+      <a href="{% url 'monthly_detail' %}" class="btn btn-primary">Signup</a>
     </div><br></br>
         <div class="col-sm-4">
       <h3>BiAnnually</h3>        
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
       <h1>$250</h1>
-      <a href="#" class="btn btn-primary">Signup</a>
+      <a href="{% url 'biannual_detail' %}" class="btn btn-primary">Signup</a>
     </div>
          <div class="col-sm-4">
       <h3>Annually</h3>        
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
       <h1>$350</h1>
-      <a href="#" class="btn btn-primary">Signup</a>
+      <a href="{% url 'annual_detail' %}" class="btn btn-primary">Signup</a>
     </div>
   </div>
 </div>

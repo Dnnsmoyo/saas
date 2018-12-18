@@ -66,3 +66,10 @@ class AnnualSerializer(serializers.ModelSerializer):
 		def get_validation_exclusions(self):
 			exclusions = super(AnnualSerializer, self).get_validation_exclusions()
 			return exclusions + ['user']
+
+class PitchSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Pitch
+		fields = '__all__'
+
+		
