@@ -28,7 +28,7 @@ cycler==0.10.0
 Cython==0.28.5
 daphne==0.9.1
 dj-database-url==0.5.0
-Django==1.11.13
+Django==1.11.29
 django-active-link==0.1.5
 django-activity-stream==0.6.5
 django-allauth==0.36.0
