@@ -74,7 +74,7 @@ idna==2.6
 incremental==17.5.0
 ipaddress==1.0.22
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 jsonfield==2.0.2
 Kivy-Garden==0.1.4
 kiwisolver==1.0.1
