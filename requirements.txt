@@ -3,7 +3,7 @@ asgi-redis==0.8.3
 asgiref==0.9
 async-timeout==2.0.1
 attrs==18.1.0
-autobahn==0.12.1
+autobahn==20.12.3
 Automat==0.6.0
 awesome-slugify==1.6.5
 backports-abc==0.5
