@@ -134,7 +134,7 @@ txaio==2.2.1
 tzlocal==1.5.1
 unicodecsv==0.14.1
 Unidecode==0.4.21
-urllib3==1.22
+urllib3==1.26.5
 vine==1.1.4
 virtualenv==16.0.0
 webencodings==0.5.1
