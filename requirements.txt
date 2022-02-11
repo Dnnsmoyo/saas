@@ -129,7 +129,7 @@ surlex==0.2.0
 thorn==1.5.2
 tornado==5.0.2
 tox==3.0.0
-Twisted==15.5.0
+Twisted==22.1.0
 txaio==2.2.1
 tzlocal==1.5.1
 unicodecsv==0.14.1
