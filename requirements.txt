@@ -99,7 +99,7 @@ py==1.5.3
 pycparser==2.18
 pygame==1.9.4
 Pygments==2.2.0
-PyJWT==1.6.4
+PyJWT==2.4.0
 pymongo==3.7.1
 pyparsing==2.2.0
 python-card-me==0.9.3
